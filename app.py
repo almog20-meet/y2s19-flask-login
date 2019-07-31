@@ -26,11 +26,11 @@ def signup():
     #check that username isn't already taken
     user = get_user(request.form['username'])
     if user == None:
-        add_user(request.form['username'],request.form['password'])
+        add_user(request.form['username'],request.form['password'], None)
     return home()
 
 
-@app.route('/logged-in')
+@app.route('/logged-in', methods=['POST', 'GET'])
 def logged_in():
     return render_template('logged.html')
 

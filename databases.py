@@ -8,10 +8,10 @@ Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-def add_user(name,secret_word):
+def add_user(name,secret_word, fav_food):
     """Add a user to the DB."""
-    user = User(username=name)
-    #there is a line of code missing here, what else does a user need?
+    user = User(username=name,fav_food=fav_food)
+    user.hash_password(secret_word)
     session.add(user)
     session.commit()
 
